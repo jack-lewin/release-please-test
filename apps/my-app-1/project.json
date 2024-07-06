@@ -1,7 +1,7 @@
 {
-  "name": "release-please-test",
+  "name": "my-app-1",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/release-please-test/src",
+  "sourceRoot": "apps/my-app-1/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -11,12 +11,12 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/release-please-test",
+        "outputPath": "dist/apps/my-app-1",
         "format": ["cjs"],
         "bundle": false,
-        "main": "apps/release-please-test/src/main.ts",
-        "tsConfig": "apps/release-please-test/tsconfig.app.json",
-        "assets": ["apps/release-please-test/src/assets"],
+        "main": "apps/my-app-1/src/main.ts",
+        "tsConfig": "apps/my-app-1/tsconfig.app.json",
+        "assets": ["apps/my-app-1/src/assets"],
         "generatePackageJson": true,
         "esbuildOptions": {
           "sourcemap": true,
@@ -41,14 +41,14 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "release-please-test:build"
+        "buildTarget": "my-app-1:build"
       },
       "configurations": {
         "development": {
-          "buildTarget": "release-please-test:build:development"
+          "buildTarget": "my-app-1:build:development"
         },
         "production": {
-          "buildTarget": "release-please-test:build:production"
+          "buildTarget": "my-app-1:build:production"
         }
       }
     }

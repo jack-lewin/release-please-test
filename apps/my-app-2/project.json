@@ -1,0 +1,56 @@
+{
+  "name": "my-app-2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/my-app-2/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/my-app-2",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/my-app-2/src/main.ts",
+        "tsConfig": "apps/my-app-2/tsconfig.app.json",
+        "assets": ["apps/my-app-2/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "my-app-2:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "my-app-2:build:development"
+        },
+        "production": {
+          "buildTarget": "my-app-2:build:production"
+        }
+      }
+    }
+  }
+}
