@@ -1,0 +1,56 @@
+{
+  "name": "release-please-test",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/release-please-test/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/release-please-test",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/release-please-test/src/main.ts",
+        "tsConfig": "apps/release-please-test/tsconfig.app.json",
+        "assets": ["apps/release-please-test/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "release-please-test:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "release-please-test:build:development"
+        },
+        "production": {
+          "buildTarget": "release-please-test:build:production"
+        }
+      }
+    }
+  }
+}
