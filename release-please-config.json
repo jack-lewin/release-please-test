@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "apps/my-app-1": {},
+    "apps/my-app-2": {
+      "additional-paths": ["libs/utils"]
+    }
+  }
+}
